@@ -13,7 +13,10 @@
         <div id="modifiers">
             <button id="reset-canvas">Restart</button>
             <button id="set-eraser">Eraser</button>
-            <button id="pick-color">Change Color</button>
+            <div id="colorer">
+                <input type="color" id="chosen-color" value="#ff0000">
+                <button id="pick-color" onclick="showColor()">Change Color</button>
+            </div>
         </div>
     </body>
     <script src="pixelart.js"></script>

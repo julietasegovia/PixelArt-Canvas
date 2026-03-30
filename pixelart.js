@@ -1,10 +1,12 @@
 const grid = document.querySelector("#canvas");
 const resetButton = document.querySelector("#reset-canvas");
 const setEraser = document.querySelector("#set-eraser");
+const chosenColor = document.querySelector("#chosen-color");
 
 let isDragging = false;
 let isErasing = false;
 let cells = [];
+let trueColor = "rgb(255, 0, 0)";
 
 for(let row = 0; row < 20; row++){
     for(let col = 0; col < 20; col++){
@@ -18,11 +20,24 @@ for(let row = 0; row < 20; row++){
 }
 
 function cellMode(cell){
-    if(isErasing)
-        cell.classList.remove('active');
-    else
-        cell.classList.add('active');
+    if(isErasing){
+        cell.style.backgroundColor = "rgb(255, 255, 255)";
+        cell.style.borderColor = "rgb(219, 217, 217)"
+    }
+    else{
+        cell.style.backgroundColor = trueColor;
+        cell.style.borderColor = trueColor;        
+    }
 }
+
+chosenColor.addEventListener("input", (e) => {
+    trueColor = e.target.value;
+
+    if(isErasing){
+        setEraser.classList.remove('eraser-set');
+        isErasing = false;
+    }
+});
 
 cells.forEach(cell => {
     cell.addEventListener('mousedown', (e) => { //when a cell is clicked, draw or erase dpending on cell mode
@@ -43,7 +58,10 @@ cells.forEach(cell => {
 
 resetButton.addEventListener("click", () =>{
     cells.forEach(cell => {
-        cell.classList.remove("active");
+        cell.style.backgroundColor = "rgb(255, 255, 255)";
+        cell.style.borderColor = "rgb(219, 217, 217)"
+        setEraser.classList.remove('eraser-set');
+        isErasing = false;
     });
 })
 

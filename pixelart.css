@@ -1,0 +1,75 @@
+@font-face {
+  font-family: pixelfont;
+  src: url(Pix32.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+h1{
+    font-family: pixelfont;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    font-family: pixelfont;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.canvas{
+    display: grid;
+    background-color: white;
+    border: 3px solid black;
+    grid-template-columns: repeat(20, 30px);
+    grid-template-rows: repeat(20, 30px);
+}
+
+.pixel{
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid rgb(219, 217, 217);
+}
+
+.pixel.active{
+    background-color: black;
+    border-color: black;
+}
+
+#modifiers{
+    margin-top: 20px;
+}
+
+#reset-canvas, #set-eraser, #pick-color{
+    height: 35px;
+    font-family: pixelfont;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+#reset-canvas{
+    width: 80px;
+}
+
+#set-eraser{
+    width: 70px;
+}
+
+#pick-color{
+    width: 135px;
+}
+
+.eraser-set{
+    background-color: gray;
+}
